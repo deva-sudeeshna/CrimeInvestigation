@@ -1,0 +1,98 @@
+<html>
+<head><style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="/enter-casee">Add Case</a>
+  <a href="/enter-officer">Add Officer</a>
+  <a href="/show-officers">View Officers</a>
+  <a href="/enter-suspect">Add Suspects</a>
+  <a href="/take-case">View Suspects</a>
+</div>
+<br>
+<br>
+<br>
+<h2>All Officers</h2>
+<table id="customers">
+    <thead>
+        <tr>
+            <th> Officer Id </th>
+            <th> Officer Name </th>            
+            <th> Email </th>       
+        	<th> Mobile Number </th>
+            <th> Address </th>
+            <th> Area </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${officers.empty}">
+            <td colspan="2"> No Officers Available </td>
+        </tr>
+          <tr th:each="officer : ${officers}">
+           <td><span th:text="${officer.officerid}">  </span></td>
+           <td><span th:text="${officer.officername}">  </span></td>
+           <td><span th:text="${officer.mail}">  </span></td>
+           <td><span th:text="${officer.mobileno}">  </span></td>
+           <td><span th:text="${officer.address}">  </span></td>
+           <td><span th:text="${officer.area}">  </span></td>            
+        </tr>
+    </tbody>
+</table>
+</body>
+
+</html>
